@@ -10,5 +10,8 @@ COPY . /app
 # Install Flask and its dependencies
 RUN pip install flask
 
+# Expose port 8080 to allow communication to the Flask app
+EXPOSE 8080
+
 # Run the Python application
 CMD ["python", "app.py"]
