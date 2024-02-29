@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      type: LoadBalancer
+      ports:
+      - name: http
+        port: 80
+        protocol: TCP
+        targetPort: 80
+      selector:
+         app: app_name
+      sessionAffinity: None
+      containers:
+      - name: mycontainer
+        image: bibhashanand/my_app:0.0.1
+        ports:
+        - containerPort: 80
