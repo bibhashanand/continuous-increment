@@ -16,7 +16,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose the port the app runs on
-EXPOSE 8080
+EXPOSE 3000
 
 # Define the command to run the application
-CMD ["gunicorn", "-w", "3", "-b", "0.0.0.0:8080", "server:app"]
+CMD ["gunicorn", "-w", "3", "-b", "0.0.0.0:3000", "server:app"]
