@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: new-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: new-app-deployment
+  template:
+    metadata:
+      labels:
+        app: new-app-deployment
+    spec:
+      containers:
+      - name: new-app-deployment
+        image: bibhashanand/new_app:0.0.1
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - name: new-app-data
+          mountPath: /usr/src/app/data
+
+      volumes:
+      - name: new-app-data
+        persistentVolumeClaim:
+          claimName: new-app-data-pvc
