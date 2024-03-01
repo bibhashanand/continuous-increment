@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: new-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: new-app
+  template:
+    metadata:
+      labels:
+        app: new-app
+    spec:
+      containers:
+      - name: new-app
+        image: bibhashanand/new_app:0.0.1
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - name: app-data
+          mountPath: /usr/src/app/data
+
+      volumes:
+      - name: app-data
+        persistentVolumeClaim:
+          claimName: new-app-data-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: new-app-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 5000
+      nodePort: 30000
+  selector:
+    app: new-app
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: new-app-data-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi 
