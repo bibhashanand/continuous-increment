@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incrementing Number</title>
+</head>
+<body>
+    <h1>Incrementing Number: <span id="number"></span></h1>
+
+    <script>
+        // Function to fetch the current number from the server and update the HTML
+        function fetchNumber() {
+            fetch('/get_number')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('number').innerText = data.number;
+            });
+        }
+
+        // Fetch the number initially when the page loads
+        fetchNumber();
+
+        // Update the number every second
+        //setInterval(fetchNumber, 1000);
+    </script>
+</body>
+</html>
