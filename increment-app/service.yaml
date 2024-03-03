@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-incrementing-app-service
+spec:
+  selector:
+    app: my-incrementing-app 
+  ports:
+    - protocol: TCP
+      port: 80  
+      targetPort: 3000  
+  type: NodePort 

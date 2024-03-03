@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-incrementing-app 
+spec:
+  replicas: 2  
+  selector:
+    matchLabels:
+      app: my-incrementing-app  
+  template:
+    metadata:
+      labels:
+        app: my-incrementing-app 
+    spec:
+      containers:
+        - name: my-app-container
+          image: bibhashanand/increment-app:0.0.1
+          ports:
+            - containerPort: 3000  
+          volumeMounts:
+            - name: number-storage 
+              mountPath: /usr/src/app/data  
+      volumes:
+        - name: number-storage
+          hostPath:
+            path: ./mnt/data
+            type: DirectoryOrCreate 
