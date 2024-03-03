@@ -20,7 +20,6 @@ spec:
         volumeMounts:
         - name: app-data
           mountPath: /usr/src/app/data
-
       volumes:
       - name: app-data
         persistentVolumeClaim:
@@ -48,4 +47,4 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi 
+      storage: 1Gi
