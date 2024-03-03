@@ -23,5 +23,5 @@ spec:
       volumes:
         - name: number-storage
           hostPath:
-            path: ./mnt/data
+            path: /mnt/data
             type: DirectoryOrCreate 
