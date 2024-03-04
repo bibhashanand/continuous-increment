@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 3030
 
-CMD ["gunicorn", "-w", "3", "-b", "0.0.0.0:3000", "server:app"]
+CMD ["gunicorn", "-w", "3", "-b", "0.0.0.0:3030", "server:app"]
