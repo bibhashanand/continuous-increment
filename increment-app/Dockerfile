@@ -7,6 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3030
 
 CMD ["gunicorn", "-w", "3", "-b", "0.0.0.0:3000", "server:app"]

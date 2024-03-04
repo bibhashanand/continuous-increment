@@ -11,5 +11,5 @@ kubectl scale deployment my-incrementing-app --replicas=1
 ```
 
 ```bash
-gunicorn -w 3 -b 0.0.0.0:3000 server:app
+gunicorn -w 3 -b 0.0.0.0:3030 server:app
 ```
